@@ -1,0 +1,72 @@
+{
+  "books": [
+    {
+      "id": "878911",
+      "name": "三国",
+      "author": "罗贯中"
+    },
+    {
+      "id": "878912",
+      "name": "水浒",
+      "author": "吴承恩"
+    }
+  ],
+  "readers": [
+    {
+      "id": "007",
+      "name": "张三疯",
+      "age": 35
+    },
+    {
+      "id": "008",
+      "name": "张四疯",
+      "age": 32
+    }
+  ],
+  "foo-bar": {
+    "code": 200,
+    "msg": "succeed"
+  },
+  "parents-login": {
+      "userId": 1
+  },
+  "teachers-login": {
+    "code": 200,
+    "msg": "succeed",
+    "data": {
+      "userId": 1
+    }
+  },
+  "admin-login": {
+    "code": 200,
+    "msg": "succeed",
+    "data": {
+      "userId": 1
+    }
+  },
+  "parents-schedule": {
+    "id": 1,
+    "tableData": [
+      {
+        "time": "上午",
+        "monday": "数学",
+        "tuesday": "语文",
+        "wednesday": "数学",
+        "thursday": "数学",
+        "friday": "数学",
+        "saturday": "数学",
+        "sunday": "数学"
+      },
+      {
+        "time": "下午",
+        "monday": "语文",
+        "tuesday": "体育",
+        "wednesday": "体育",
+        "thursday": "体育",
+        "friday": "体育",
+        "saturday": "体育",
+        "sunday": "体育"
+      }
+    ]
+  }
+}
