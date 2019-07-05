@@ -2,7 +2,7 @@ import axios from 'axios'
 import {PeopleResource} from './resource'
 
 export default {
-  getParentLoginResource () {
+  getParentResource () {
     return axios.post(PeopleResource)
   }
 }
