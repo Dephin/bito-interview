@@ -1,5 +1,6 @@
 <template>
   <div>
+    <el-button @click="snapshot">save</el-button>
     <el-card shadow="always">
       <x-chart id="highcharts" class="high" :data.sync="data" :titles="chartTitles"></x-chart>
     </el-card>
@@ -28,11 +29,37 @@ export default {
     }, 10 * 1000)
   },
   methods: {
+    snapshot () {
+      this.updateSnapshotPeopleData(this.data)
+        .then((res) => {
+          console.log('ok')
+        })
+        .catch((res) => {
+          console.log(res)
+        })
+    },
     getPeopleData () {
       console.log('refresh')
-      api.getParentResource()
+      api.getPeopleResource()
         .then((res) => {
           this.data = res.data
+          this.updatePeopleData(res.data)
+        })
+        .catch((res) => {
+          console.log(res)
+        })
+    },
+    updatePeopleData (data) {
+      api.updatePeopleResource(data)
+        .then((res) => {
+        })
+        .catch((res) => {
+          console.log(res)
+        })
+    },
+    updateSnapshotPeopleData (data) {
+      api.updatePeopleSnapshotResource(data)
+        .then((res) => {
         })
         .catch((res) => {
           console.log(res)

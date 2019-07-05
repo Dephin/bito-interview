@@ -1,8 +1,21 @@
 import axios from 'axios'
-import {PeopleResource} from './resource'
+import {GetPeopleUri, UpdatePeopleUri, GetPeopleSnapshotUri, UpdatePeopleSnapshotUri} from './resource'
 
 export default {
-  getParentResource () {
-    return axios.post(PeopleResource)
+  getPeopleResource () {
+    return axios.get(GetPeopleUri)
+  },
+  updatePeopleResource (data) {
+    return axios.post(UpdatePeopleUri, data)
+  },
+  getPeopleSnapshotResource (limit) {
+    return axios.post(GetPeopleSnapshotUri, {
+      params: {
+        limit: limit
+      }
+    })
+  },
+  updatePeopleSnapshotResource (data) {
+    return axios.post(UpdatePeopleSnapshotUri, data)
   }
 }
