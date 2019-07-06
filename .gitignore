@@ -1,0 +1,5 @@
+
+flask-bito/.idea
+flask-bito/venv
+flask-bito/*.pyc
+.DS_Store
