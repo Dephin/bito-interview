@@ -1,10 +1,10 @@
 const API_ROOT = '/api'
 
 const apiPeople = {
-  people: '/people',
-  peopleUpdate: '/people/update',
-  snapshot: '/people/snapshot',
-  snapshotUpdate: '/people/snapshot/update'
+  people: '/people-info',
+  peopleUpdate: '/people-info/update',
+  snapshot: '/people-snapshot',
+  snapshotUpdate: '/people-snapshot/update'
 }
 
 export const GetPeopleUri = API_ROOT.concat(apiPeople.people)

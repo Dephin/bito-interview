@@ -13,8 +13,8 @@ from model import PeopleInfo, PeopleSnapshot, db
 ROOT_DIR = os.path.dirname(__file__)
 
 api = Blueprint('api', __name__,
-                static_folder=os.path.join(ROOT_DIR, 'dist', 'static'),
-                template_folder=os.path.join(ROOT_DIR, 'dist')
+                static_folder='static',
+                template_folder='templates'
                 )
 
 
