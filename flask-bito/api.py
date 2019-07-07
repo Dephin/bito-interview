@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-# @Time    : view.py
+# @Time    : api.py
 # @Author  : dephin
 # @File    : 2019-07-06
 import os
@@ -49,10 +49,15 @@ def get_people_data():
 
 @api.route('/people-info/update', methods=['POST'])
 def update_people_data():
-    req_data = request.get_json()
-    print(req_data)
-    people_info = PeopleInfo(**req_data)
-    db.session.add(people_info)
+    req_data = request.get_json()['chartData']
+    insert_data = []
+    for row in req_data:
+        name = row['name']
+        for data in row['data']:
+            insert_data.append({'name': name, 'data': data})
+    for item in insert_data:
+        people_info = PeopleInfo(**item)
+        db.session.add(people_info)
     db.session.commit()
     return jsonify(success=True)
 
@@ -78,8 +83,7 @@ def get_people_snapshot_data():
 
 @api.route('/people-snapshot/update', methods=['POST'])
 def update_people_snapshot_data():
-    req_data = request.get_json()
-    print(req_data)
+    req_data = request.get_json()['chartData']
     people_snapshot = PeopleSnapshot(**req_data)
     db.session.add(people_snapshot)
     return jsonify(success=True)
