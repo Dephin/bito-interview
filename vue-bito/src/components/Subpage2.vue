@@ -21,6 +21,11 @@ export default {
       }
     }
   },
+  created () {
+    this.$root.eventHub.$on('refreshSubpage2', (data) => {
+      this.data = data
+    })
+  },
   mounted () {
     this.getPeopleSnapshotData()
   },

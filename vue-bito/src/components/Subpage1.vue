@@ -55,6 +55,7 @@ export default {
       api.updatePeopleSnapshotResource(data)
         .then((res) => {
           this.$message('save successfully')
+          this.$root.eventHub.$emit('refreshSubpage2', this.data)
         })
         .catch((res) => {
           this.$message('save failed')
