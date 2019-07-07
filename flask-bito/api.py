@@ -7,6 +7,7 @@ import os
 import random
 
 from flask import jsonify, request, Blueprint, abort
+from flask_cors import CORS
 
 from model import PeopleInfo, PeopleSnapshot, db
 
@@ -16,6 +17,7 @@ api = Blueprint('api', __name__,
                 static_folder='static',
                 template_folder='templates'
                 )
+CORS(api)
 
 
 @api.teardown_request
