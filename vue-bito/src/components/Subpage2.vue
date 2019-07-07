@@ -1,5 +1,6 @@
 <template>
 <div>
+  <h2><strong>Snapshot Chart</strong></h2>
   <el-card shadow="always">
     <x-chart id="highcharts2" class="high" :data.sync="data" :titles="chartTitles"></x-chart>
   </el-card>
@@ -47,5 +48,7 @@ export default {
 </script>
 
 <style scoped>
-
+  h2 {
+    margin-top: 0;
+  }
 </style>
