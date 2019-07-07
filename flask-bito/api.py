@@ -49,46 +49,61 @@ def get_people_data():
 
 @api.route('/people-info/update', methods=['POST'])
 def update_people_data():
-    req_data = request.get_json()['chartData']
-    insert_data = []
-    for row in req_data:
-        name = row['name']
-        for data in row['data']:
-            insert_data.append({'name': name, 'data': data})
-    for item in insert_data:
-        people_info = PeopleInfo(**item)
-        db.session.add(people_info)
-    db.session.commit()
-    return jsonify(success=True)
+    try:
+        req_data = request.get_json()['chartData']
+        insert_data = _convert_json2data(req_data)
+        for item in insert_data:
+            people_info = PeopleInfo(**item)
+            db.session.add(people_info)
+        return jsonify(success=True)
+    except:
+        abort(500)
 
 
 @api.route('/people-snapshot', methods=['GET'])
 def get_people_snapshot_data():
-    limit = request.args.get('limit')
-    records = PeopleSnapshot.query.limit(limit)
-    resutl = {}
-    for r in records:
-        if r.name in resutl:
-            resutl[r.name].append(r.data)
-        else:
-            resutl[r.name] = [r.data]
-    ret = []
-    for (k, v) in resutl.items():
-        ret.append({
-            'name': k,
-            'data': v,
-        })
-    return jsonify(ret)
+    try:
+        limit = request.args.get('limit')
+        records = PeopleSnapshot.query.limit(limit)
+        resutl = {}
+        for r in records:
+            if r.name in resutl:
+                resutl[r.name].append(r.data)
+            else:
+                resutl[r.name] = [r.data]
+        ret = []
+        for (k, v) in resutl.items():
+            ret.append({
+                'name': k,
+                'data': v,
+            })
+        return jsonify(ret)
+    except:
+        abort(500)
 
 
 @api.route('/people-snapshot/update', methods=['POST'])
 def update_people_snapshot_data():
-    req_data = request.get_json()['chartData']
-    people_snapshot = PeopleSnapshot(**req_data)
-    db.session.add(people_snapshot)
-    return jsonify(success=True)
+    try:
+        req_data = request.get_json()['chartData']
+        insert_data = _convert_json2data(req_data)
+        for item in insert_data:
+            people_info = PeopleSnapshot(**item)
+            db.session.add(people_info)
+        return jsonify(success=True)
+    except:
+        abort(500)
 
 
 @api.errorhandler(500)
 def server_error():
     return 'Server Error'
+
+
+def _convert_json2data(req_data):
+    insert_data = []
+    for row in req_data:
+        name = row['name']
+        for data in row['data']:
+            insert_data.append({'name': name, 'data': data})
+    return insert_data
