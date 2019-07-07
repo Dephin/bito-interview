@@ -1,13 +1,9 @@
 <template>
   <div>
-    <el-row>
-      <el-col span="4">
-        <h2 style=""><strong>People Chart</strong></h2>
-      </el-col>
-      <el-col span="2" offset="15">
-        <el-button  @click="snapshot" type="primary">save</el-button>
-      </el-col>
-    </el-row>
+    <div class="box">
+      <h2><strong>People Chart</strong></h2>
+      <el-button @click="snapshot" type="primary" style="">save</el-button>
+    </div>
     <el-card shadow="always">
       <x-chart id="highcharts" class="high" :data.sync="data" :titles="chartTitles"></x-chart>
     </el-card>
@@ -17,6 +13,7 @@
 <script>
 import XChart from '@/components/Charts'
 import api from '../api/index'
+
 export default {
   name: 'subpage1',
   data () {
@@ -79,5 +76,15 @@ export default {
 <style scoped>
   h2 {
     margin-top: 0;
+  }
+  .box {
+    display: -webkit-flex; /* Safari */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .box .el-button {
+    width: 92px;
+    height: 40px
   }
 </style>
