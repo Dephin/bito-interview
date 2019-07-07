@@ -31,12 +31,6 @@ export default {
   methods: {
     snapshot () {
       this.updateSnapshotPeopleData(this.data)
-        .then((res) => {
-          console.log('ok')
-        })
-        .catch((res) => {
-          console.log(res)
-        })
     },
     getPeopleData () {
       console.log('refresh')
@@ -60,8 +54,10 @@ export default {
     updateSnapshotPeopleData (data) {
       api.updatePeopleSnapshotResource(data)
         .then((res) => {
+          this.$message('save successfully')
         })
         .catch((res) => {
+          this.$message('save failed')
           console.log(res)
         })
     }

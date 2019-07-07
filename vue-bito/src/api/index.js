@@ -6,7 +6,7 @@ export default {
     return axios.get(GetPeopleUri)
   },
   updatePeopleResource (data) {
-    return axios.post(UpdatePeopleUri, data)
+    return axios.post(UpdatePeopleUri, {chartData: data})
   },
   getPeopleSnapshotResource (limit) {
     return axios.post(GetPeopleSnapshotUri, {
@@ -16,6 +16,6 @@ export default {
     })
   },
   updatePeopleSnapshotResource (data) {
-    return axios.post(UpdatePeopleSnapshotUri, data)
+    return axios.post(UpdatePeopleSnapshotUri, {chartData: data})
   }
 }
