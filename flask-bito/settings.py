@@ -5,7 +5,7 @@
 # @File    : 2019-07-06
 
 # 调试模式是否开启
-DEBUG = True
+DEBUG = False
 
 SQLALCHEMY_TRACK_MODIFICATIONS = True
 # session必须要设置key
