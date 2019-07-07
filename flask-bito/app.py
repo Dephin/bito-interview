@@ -6,7 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 import pymysql
 
 from model import db
-from view import api
+from api import api
 
 pymysql.install_as_MySQLdb()
 
